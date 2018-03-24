@@ -44,6 +44,16 @@ var managers;
             this.LivesLabel = new objects.Label("Lives: 0", "20px", "Dock51", "#FFFF00", 10, 10, false);
             this.ScoreLabel = new objects.Label("Score: 99999", "20px", "Dock51", "#FFFF00", 500, 10, false);
             this.HighScoreLabel = new objects.Label("High Score: 99999", "40px", "Dock51", "#FFFF00", 320, 240, true);
+            // if (managers.Game.currentScene == config.Scene.PLAY) {
+            //   this.Lives = 5;
+            //   this.Score = 0;
+            //   this.HighScore = 0;
+            // }
+            // else if (managers.Game.currentScene == config.Scene.PLAY2) {
+            //   this.Lives = this.Lives;
+            //   this.Score = this.Score;
+            //   this.HighScore = managers.Game.currentScore;
+            // }
             this.Lives = 5;
             this.Score = 0;
             this.HighScore = 0;

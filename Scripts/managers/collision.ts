@@ -23,10 +23,11 @@ module managers {
                   createjs.Sound.play("life");
                 }
 
+
                 if (managers.Game.HighScore <= managers.Game.scoreBoard.Score) {
                   managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
                   managers.Game.HighScore = managers.Game.scoreBoard.HighScore;
-                }
+                }  
               }
               break;
             case "cloud":

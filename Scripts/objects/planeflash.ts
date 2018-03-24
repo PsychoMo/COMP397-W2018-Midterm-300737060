@@ -13,11 +13,11 @@ module objects {
 
     // public methods
     public Start(): void {
-
+      // this.rotation = 90;
     }
 
     public Update(): void {
-
+      // this.rotation = 90;
     }
   }
 }

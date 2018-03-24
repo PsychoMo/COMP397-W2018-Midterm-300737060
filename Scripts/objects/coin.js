@@ -28,9 +28,24 @@ var objects;
             this.CheckBounds();
         };
         Coin.prototype.CheckBounds = function () {
-            if (this.y > (480 + this.height)) {
-                this.alpha = 1;
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                if (this.y > (480 + this.height)) {
+                    this.alpha = 1;
+                }
             }
+            else if (managers.Game.currentScene == config.Scene.PLAY2) {
+                if (this.x < -this.width) {
+                    this.alpha = 1;
+                }
+            }
+            else if (managers.Game.currentScene == config.Scene.PLAY3) {
+                if (this.x > 640 + this.width) {
+                    this.alpha = 1;
+                }
+            }
+            // if(this.y > (480 + this.height)) {
+            //   this.alpha = 1;
+            // }
         };
         return Coin;
     }(objects.GameObject));

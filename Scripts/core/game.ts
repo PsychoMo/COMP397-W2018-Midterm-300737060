@@ -50,7 +50,7 @@
       [69, 316, 65, 65, 0, 0, 0],
       [136, 316, 200, 60, 0, 0, 0],
       [2, 383, 200, 60, 0, 0, 0]
-  ],
+    ],
 
     "animations": {
       "cloud": { "frames": [0] },
@@ -138,6 +138,12 @@
         break;
       case config.Scene.PLAY:
         currentScene = new scenes.PlayScene();
+        break;
+      case config.Scene.PLAY2:
+        currentScene = new scenes.PlayScene2();
+        break;
+      case config.Scene.PLAY3:
+        currentScene = new scenes.PlayScene3();
         break;
       case config.Scene.OVER:
         currentScene = new scenes.OverScene();

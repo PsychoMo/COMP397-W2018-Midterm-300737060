@@ -7,6 +7,8 @@ module scenes {
     private _clouds: objects.Cloud[];
     private _cloudNum: number;
     private _scoreBoard: managers.ScoreBoard;
+    private _currentLives: number;
+    private _currentScore: number;
 
     private _engineSound: createjs.AbstractSoundInstance;
     private _coin: objects.Coin;
@@ -37,7 +39,7 @@ module scenes {
 
       // instantiate the cloud array
       this._clouds = new Array<objects.Cloud>();
-      this._cloudNum = 3;
+      this._cloudNum = 1;
       // loop and add each cloud to the array
       for (let count = 0; count < this._cloudNum; count++) {
         this._clouds[count] = new objects.Cloud();
@@ -50,6 +52,7 @@ module scenes {
       // create the scoreboard UI for the Scene
       this._scoreBoard = new managers.ScoreBoard();
       managers.Game.scoreBoard = this._scoreBoard;
+
 
       this.Main();
     }
@@ -73,6 +76,15 @@ module scenes {
         // check collision between plane and current cloud
         managers.Collision.Check(this._plane, cloud);
       });
+
+      if (this._scoreBoard.HighScore >= 500) {
+        managers.Game.currentScene = config.Scene.PLAY2;
+        // managers.Game.currentLives = this._scoreBoard.HighScore;
+        managers.Game.currentLives = this._scoreBoard.Lives;
+        managers.Game.currentScore = this._scoreBoard.Score;
+        managers.Game.currentHighScore = this._scoreBoard.HighScore;
+        // this._scoreBoard.Lives = this._scoreBoard.Lives;
+      }
 
       // if lives fall below zero switch scenes to the game over scene
       if(this._scoreBoard.Lives <= 0) {

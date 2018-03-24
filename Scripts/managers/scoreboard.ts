@@ -1,9 +1,11 @@
 module managers {
   export class ScoreBoard {
     // private instance variables
-    private _lives:number;
-    private _score:number;
-    private _highScore:number;
+    private _lives: number;
+    private _score: number;
+    private _highScore: number;
+
+
 
     // public Instance variables
     public LivesLabel: objects.Label;
@@ -11,29 +13,29 @@ module managers {
     public HighScoreLabel: objects.Label;
 
     // public properties
-    get Lives():number {
+    get Lives(): number {
       return this._lives;
     }
 
-    set Lives(newLives:number) {
+    set Lives(newLives: number) {
       this._lives = newLives;
       this.LivesLabel.text = "Lives: " + this._lives;
     }
 
-    get Score():number {
+    get Score(): number {
       return this._score;
     }
 
-    set Score(newScore:number) {
+    set Score(newScore: number) {
       this._score = newScore;
       this.ScoreLabel.text = "Score: " + this._score;
     }
 
-    get HighScore():number {
+    get HighScore(): number {
       return this._highScore;
     }
 
-    set HighScore(newHighScore:number) {
+    set HighScore(newHighScore: number) {
       this._highScore = newHighScore;
       this.HighScoreLabel.text = "High Score: " + this._highScore;
     }
@@ -44,10 +46,21 @@ module managers {
     }
 
     // private methods
-    private _initialize():void {
+    private _initialize(): void {
       this.LivesLabel = new objects.Label("Lives: 0", "20px", "Dock51", "#FFFF00", 10, 10, false);
       this.ScoreLabel = new objects.Label("Score: 99999", "20px", "Dock51", "#FFFF00", 500, 10, false);
       this.HighScoreLabel = new objects.Label("High Score: 99999", "40px", "Dock51", "#FFFF00", 320, 240, true);
+
+      // if (managers.Game.currentScene == config.Scene.PLAY) {
+      //   this.Lives = 5;
+      //   this.Score = 0;
+      //   this.HighScore = 0;
+      // }
+      // else if (managers.Game.currentScene == config.Scene.PLAY2) {
+      //   this.Lives = this.Lives;
+      //   this.Score = this.Score;
+      //   this.HighScore = managers.Game.currentScore;
+      // }
 
       this.Lives = 5;
       this.Score = 0;

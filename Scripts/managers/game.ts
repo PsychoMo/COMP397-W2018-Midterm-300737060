@@ -9,5 +9,8 @@ module managers {
     public static HighScore: number = 0;
     public static textureAtlas: createjs.SpriteSheet;
     public static plane: objects.Plane;
+    public static currentLives: number;
+    public static currentScore: number;
+    public static currentHighScore: number;
   }
 }

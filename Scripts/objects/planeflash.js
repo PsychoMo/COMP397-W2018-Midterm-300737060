@@ -21,8 +21,10 @@ var objects;
         // private methods
         // public methods
         PlaneFlash.prototype.Start = function () {
+            // this.rotation = 90;
         };
         PlaneFlash.prototype.Update = function () {
+            // this.rotation = 90;
         };
         return PlaneFlash;
     }(objects.GameObject));

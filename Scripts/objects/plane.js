@@ -31,8 +31,21 @@ var objects;
             this.planeFlash = new objects.PlaneFlash();
             this.planeFlash.alpha = 1;
             this.planeFlash.on("animationend", this._animationEnded.bind(this), false);
-            this.x = 320;
-            this.y = 430;
+            console.log(managers.Game.currentScene);
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                this.x = 320;
+                this.y = 430;
+            }
+            else if (managers.Game.currentScene == config.Scene.PLAY2) {
+                this.x = 50;
+                this.y = 240;
+                this.rotation = 90;
+            }
+            else if (managers.Game.currentScene == config.Scene.PLAY3) {
+                this.x = 590;
+                this.y = 240;
+                this.rotation = -90;
+            }
         };
         // updates the game object every frame
         Plane.prototype.Update = function () {
@@ -46,12 +59,33 @@ var objects;
         Plane.prototype.Move = function () {
             // mouse controls
             // this.x = objects.Game.stage.mouseX;
-            // keyboard controls
-            if (managers.Game.keyboardManager.moveLeft) {
-                this.x -= 5;
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                if (managers.Game.keyboardManager.moveLeft) {
+                    this.x -= 5;
+                }
+                if (managers.Game.keyboardManager.moveRight) {
+                    this.x += 5;
+                }
             }
-            if (managers.Game.keyboardManager.moveRight) {
-                this.x += 5;
+            else if (managers.Game.currentScene == config.Scene.PLAY2) {
+                // keyboard controls
+                if (managers.Game.keyboardManager.moveForward) {
+                    this.y -= 5;
+                }
+                if (managers.Game.keyboardManager.moveBackward) {
+                    this.y += 5;
+                }
+                this.planeFlash.rotation = 90;
+            }
+            else if (managers.Game.currentScene == config.Scene.PLAY3) {
+                // keyboard controls
+                if (managers.Game.keyboardManager.moveForward) {
+                    this.y -= 5;
+                }
+                if (managers.Game.keyboardManager.moveBackward) {
+                    this.y += 5;
+                }
+                this.planeFlash.rotation = -90;
             }
             this.planeFlash.x = this.x;
             this.planeFlash.y = this.y;
@@ -65,6 +99,14 @@ var objects;
             // left boundary
             if (this.x <= this.halfWidth) {
                 this.x = this.halfWidth;
+            }
+            // top boundary
+            if (this.y <= this.halfHeight) {
+                this.y = this.halfHeight;
+            }
+            // bottom boundary
+            if (this.y >= 480 - this.halfHeight) {
+                this.y = 480 - this.halfHeight;
             }
         };
         return Plane;
